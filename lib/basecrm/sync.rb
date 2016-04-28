@@ -66,13 +66,31 @@ module BaseCRM
       end
     end
 
+    # Return currently used Sync Device.
+    #
+    # @return [BaseCRM::SyncDevice] Sync Device instance
+    def device
+      @device ||= @client.sync_devices.find(@device_uuid)
+    end
+
+    # Perform udpate on currently used Sync Device.
+    #
+    # @param attributes[Hash] Attributes to update
+    # @option attributes [Array] :resource_types List of resource types the device syncs
+    #
+    # @return [BaseCRM::SyncDevice] Updated Sync Device instance
+    def update_device(attributes)
+      @device.resource_types = attributes[:resource_types] if attributes[:resource_types]
+      @device = @client.sync_devices.update(@device)
+    end
+
   private
     def validate!
       unless @device_uuid
         raise ConfigurationError.new('No device UUID provided. '\
           'The UUID must not change between synchronization sessions. '\
           'Set your device\'s UUID during wrapper initialization using: '\
-          '"Base::Sync.new(device_uuid: <YOUR_DEVICES_UUID>, client: client)".')
+          '"Base::Sync.new(device_uuid: <YOUR_DEVICE_UUID>, client: client)".')
       end
 
       unless @client

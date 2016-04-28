@@ -8,6 +8,9 @@ module BaseCRM
     # @!attribute [r] creator_id
     #   @return [Integer] Unique identifier of the user who created the deal.
     # attr_reader :creator_id
+    # @!attribute [r] dropbox_email
+    #   @return [String] Dropbox email connected with the deal.
+    # attr_reader :dropbox_email
     # @!attribute [r] id
     #   @return [Integer] Unique identifier of the deal.
     # attr_reader :id
@@ -27,9 +30,6 @@ module BaseCRM
     # @!attribute [rw] custom_fields
     #   @return [Hash] Custom fields are key-value data attached to a deal. See more at [Custom Fields](/docs/rest/articles/requests#custom_fields).
     # attr_accessor :custom_fields
-    # @!attribute [rw] dropbox_email
-    #   @return [String] Dropbox email connected with the deal.
-    # attr_accessor :dropbox_email
     # @!attribute [rw] hot
     #   @return [Boolean] Indicator of whether or not the deal is hot.
     # attr_accessor :hot

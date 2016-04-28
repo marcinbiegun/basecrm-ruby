@@ -278,6 +278,20 @@ client.stages # => BaseCRM::StagesService
 Actions:
 * Retrieve all stages - `client.stages.all`
 
+### SyncDevice
+
+```ruby
+client = BaseCRM::Client.new(access_token: "<YOUR_PERSONAL_ACCESS_TOKEN>")
+client.sync_devices # => BaseCRM::SyncDevicesService
+```
+
+Actions:
+* Retrieve all sync devices - `client.sync_devices.all`
+* Create a sync device - `client.sync_devices.create`
+* Retrieve a single sync device - `client.sync_devices.find`
+* Update a sync device - `client.sync_devices.update`
+* Upsert a sync device - `client.sync_devices.upsert`
+
 ### Tag
 
 ```ruby

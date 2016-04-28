@@ -30,19 +30,19 @@ module BaseCRM
       end
     end
 
-    def get(path, params={}, headers={})
-      request(:get, path, params, headers)
+    def get(path, params={})
+      request(:get, path, params)
     end
 
-    def post(path, body={}, headers={})
-      request(:post, path, body, headers)
+    def post(path, body={})
+      request(:post, path, body)
     end
 
-    def put(path, body={}, headers={})
-      request(:put, path, body, headers)
+    def put(path, body={})
+      request(:put, path, body)
     end
 
-    def delete(path, params={}, headers={})
+    def delete(path, params={})
       request(:delete, path, params)
     end
 
@@ -72,7 +72,7 @@ module BaseCRM
       RUBY
 
       body = extract_body(res)
-      @config.logger.debug body if @config.debug? && body && @config.logger
+      @config.logger.debug(body) if @config.debug? && body && @config.logger
       [res.status, res.headers, body]
     rescue Faraday::Error::ConnectionFailed => e
       raise ConnectionError, e.message
